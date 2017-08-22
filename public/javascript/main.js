@@ -5,10 +5,10 @@ class Header extends React.Component {
 	
 	render() {
 		return (<div className="header">
-			<div className="clear-btn icon">
+			<div className="clear-btn icon" onClick={(e) => { window.dispatchEvent(new Event("app.editor.clear")); }}>
 				<img src="public/images/clear.svg" />
 			</div>
-			<div className="save-btn icon">
+			<div className="save-btn icon" onClick={(e) => { window.dispatchEvent(new Event("app.editor.save")); }}>
 				<img src="public/images/save.svg" />
 			</div>
 		</div>);
@@ -18,16 +18,21 @@ class Header extends React.Component {
 class Editor extends React.Component {
 	constructor() {
 		super();
+		
+		window.addEventListener("app.editor.clear", function() {
+			document.querySelector(".editor textarea").value = "";
+		});
 	}
 	
 	
 	render() {
 		return (
 			<div className="editor">
-				<textarea spellCheck="false" onChange={this.onChange}/>
+				<textarea spellCheck="false" onChange={(e) => this.onChange}/>
 			</div>
 		);
 	}
+
 }
 
 class Application extends React.Component {

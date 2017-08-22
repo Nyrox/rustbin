@@ -42,11 +42,17 @@ var _createClass = function() {
             return React.createElement("div", {
                 className: "header"
             }, React.createElement("div", {
-                className: "clear-btn icon"
+                className: "clear-btn icon",
+                onClick: function(e) {
+                    window.dispatchEvent(new Event("app.editor.clear"));
+                }
             }, React.createElement("img", {
                 src: "public/images/clear.svg"
             })), React.createElement("div", {
-                className: "save-btn icon"
+                className: "save-btn icon",
+                onClick: function(e) {
+                    window.dispatchEvent(new Event("app.editor.save"));
+                }
             }, React.createElement("img", {
                 src: "public/images/save.svg"
             })));
@@ -54,16 +60,23 @@ var _createClass = function() {
     } ]), t;
 }(React.Component), Editor = function(e) {
     function t() {
-        return _classCallCheck(this, t), _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
+        _classCallCheck(this, t);
+        var e = _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
+        return window.addEventListener("app.editor.clear", function() {
+            document.querySelector(".editor textarea").value = "";
+        }), e;
     }
     return _inherits(t, e), _createClass(t, [ {
         key: "render",
         value: function() {
+            var e = this;
             return React.createElement("div", {
                 className: "editor"
             }, React.createElement("textarea", {
                 spellCheck: "false",
-                onChange: this.onChange
+                onChange: function(t) {
+                    return e.onChange;
+                }
             }));
         }
     } ]), t;
