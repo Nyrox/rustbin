@@ -42,6 +42,7 @@ var _createClass = function() {
             return React.createElement("div", {
                 className: "editor"
             }, React.createElement("textarea", {
+                spellCheck: "false",
                 onChange: this.onChange
             }));
         }

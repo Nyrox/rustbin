@@ -7,7 +7,7 @@ class Editor extends React.Component {
 	render() {
 		return (
 			<div className="editor">
-				<textarea onChange={this.onChange}/>
+				<textarea spellCheck="false" onChange={this.onChange}/>
 			</div>
 		);
 	}
