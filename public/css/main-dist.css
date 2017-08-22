@@ -16,7 +16,7 @@
 
 textarea {
   width: 100%;
-  height: calc(100%);
+  height: calc(100% - 12px);
   background: inherit;
   color: inherit;
   border: none;
