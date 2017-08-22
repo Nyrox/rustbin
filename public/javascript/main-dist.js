@@ -34,9 +34,7 @@ var _createClass = function() {
     };
 }(), Editor = function(e) {
     function t() {
-        _classCallCheck(this, t);
-        var e = _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
-        return e.state = {}, e;
+        return _classCallCheck(this, t), _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
     }
     return _inherits(t, e), _createClass(t, [ {
         key: "render",
@@ -47,9 +45,6 @@ var _createClass = function() {
                 onChange: this.onChange
             }));
         }
-    }, {
-        key: "onChange",
-        value: function() {}
     } ]), t;
 }(React.Component), Application = function(e) {
     function t() {

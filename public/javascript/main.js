@@ -1,24 +1,15 @@
 class Editor extends React.Component {
 	constructor() {
 		super();
-		
-		this.state = {
-			
-		}
 	}
 	
 	
 	render() {
-
 		return (
 			<div className="editor">
 				<textarea onChange={this.onChange}/>
 			</div>
 		);
-	}
-	
-	onChange() {
-		
 	}
 }
 
