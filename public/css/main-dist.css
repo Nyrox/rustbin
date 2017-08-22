@@ -16,13 +16,35 @@
 
 textarea {
   width: 100%;
-  height: 100%;
+  height: calc(100%);
   background: inherit;
   color: inherit;
   border: none;
   -moz-tab-size: 4;
   -o-tab-size: 4;
-  tab-size: 4; }
+  tab-size: 4;
+  resize: none; }
   textarea:focus {
     border: none;
     outline: none !important; }
+
+.header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  right: 24px;
+  background: #DE3131; }
+
+.header .icon {
+  width: 42px;
+  height: 42px;
+  cursor: pointer; }
+  .header .icon:not(:last-of-type) {
+    border-right: 0.5px solid rgba(247, 247, 247, 0.5); }
+
+.header .icon img {
+  display: block;
+  height: 24px;
+  margin: 9px auto; }

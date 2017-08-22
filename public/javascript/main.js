@@ -1,3 +1,20 @@
+class Header extends React.Component {
+	constructor() {
+		super();
+	}
+	
+	render() {
+		return (<div className="header">
+			<div className="clear-btn icon">
+				<img src="public/images/clear.svg" />
+			</div>
+			<div className="save-btn icon">
+				<img src="public/images/save.svg" />
+			</div>
+		</div>);
+	}
+}
+
 class Editor extends React.Component {
 	constructor() {
 		super();
@@ -14,9 +31,15 @@ class Editor extends React.Component {
 }
 
 class Application extends React.Component {
+	constructor() {
+		super();
+	}
 	
 	render() {
-		return <Editor />;
+		return (<div>
+			<Header />
+			<Editor />
+		</div>);
 	}
 }
 

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+$red: #DE3131;
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -16,17 +18,45 @@
 	
 	padding-top: 12px;
 	padding-left: 12px;
-}
 
+}
 
 textarea {
 	width: 100%;
-	height: 100%;
+	height: calc(100%);
 	
 	background: inherit;
 	color: inherit;
 	border: none;
 	tab-size: 4;
+	resize: none;
 	
 	&:focus { border: none; outline: none !important; }
+}
+
+$header-height: 42px;
+$header-icon-height: 24px;
+
+.header {
+	display: flex;
+	
+	position: fixed;
+	right: 24px;
+	background: $red;
+}
+
+.header .icon {
+	width: $header-height;
+	height: $header-height;
+	cursor: pointer;
+	
+	&:not(:last-of-type) {
+		border-right: 0.5px solid rgba(247, 247, 247, 0.5);
+	}
+}
+
+.header .icon img {
+	display: block;
+	height: $header-icon-height;
+	margin: ($header-height - $header-icon-height) / 2 auto;
 }

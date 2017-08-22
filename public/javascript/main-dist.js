@@ -32,7 +32,27 @@ var _createClass = function() {
     return function(t, n, r) {
         return n && e(t.prototype, n), r && e(t, r), t;
     };
-}(), Editor = function(e) {
+}(), Header = function(e) {
+    function t() {
+        return _classCallCheck(this, t), _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
+    }
+    return _inherits(t, e), _createClass(t, [ {
+        key: "render",
+        value: function() {
+            return React.createElement("div", {
+                className: "header"
+            }, React.createElement("div", {
+                className: "clear-btn icon"
+            }, React.createElement("img", {
+                src: "public/images/clear.svg"
+            })), React.createElement("div", {
+                className: "save-btn icon"
+            }, React.createElement("img", {
+                src: "public/images/save.svg"
+            })));
+        }
+    } ]), t;
+}(React.Component), Editor = function(e) {
     function t() {
         return _classCallCheck(this, t), _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
     }
@@ -49,12 +69,12 @@ var _createClass = function() {
     } ]), t;
 }(React.Component), Application = function(e) {
     function t() {
-        return _classCallCheck(this, t), _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments));
+        return _classCallCheck(this, t), _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
     }
     return _inherits(t, e), _createClass(t, [ {
         key: "render",
         value: function() {
-            return React.createElement(Editor, null);
+            return React.createElement("div", null, React.createElement(Header, null), React.createElement(Editor, null));
         }
     } ]), t;
 }(React.Component);
