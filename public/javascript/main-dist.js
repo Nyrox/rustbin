@@ -21,6 +21,13 @@ function _inherits(e, t) {
     }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
 }
 
+function send_ajax_request(e, t, n) {
+    var r = new XMLHttpRequest();
+    r.onreadystatechange = function() {
+        r.readyState === XMLHttpRequest.DONE && n(200 === r.status ? r.responseText : null);
+    }, r.open("POST", e), r.setRequestHeader("Content-Type", "application/json"), r.send(t);
+}
+
 var _createClass = function() {
     function e(e, t) {
         for (var n = 0; n < t.length; n++) {
@@ -64,6 +71,16 @@ var _createClass = function() {
         var e = _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
         return window.addEventListener("app.editor.clear", function() {
             document.querySelector(".editor textarea").value = "";
+        }), window.addEventListener("app.editor.save", function() {
+            var e = document.querySelector(".editor textarea").value;
+            send_ajax_request("./api/save", JSON.stringify({
+                payload: e
+            }), function(e) {
+                if (null !== e) {
+                    var t = JSON.parse(e);
+                    console.log(t.id);
+                } else console.error("API Request to './api/save' has failed");
+            });
         }), e;
     }
     return _inherits(t, e), _createClass(t, [ {

@@ -6,4 +6,7 @@ authors = ["MINISTRY\\mark.junge <mark.junge@ministrygroup.de>"]
 [dependencies]
 rocket = "0.3.2"
 rocket_codegen = "0.3.2"
-
+rocket_contrib="*"
+serde="*"
+serde_derive="*"
+serde_json="*"
