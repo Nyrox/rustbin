@@ -21,23 +21,23 @@ function _inherits(e, t) {
     }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
 }
 
-function send_ajax_request(e, t, n) {
-    var r = new XMLHttpRequest();
-    r.onreadystatechange = function() {
-        r.readyState === XMLHttpRequest.DONE && n(200 === r.status ? r.responseText : null);
-    }, r.open("POST", e), r.setRequestHeader("Content-Type", "application/json"), r.send(t);
+function send_ajax_request(e, t, n, a, r) {
+    var o = new XMLHttpRequest();
+    o.onreadystatechange = function() {
+        o.readyState === XMLHttpRequest.DONE && r(200 === o.status ? o.responseText : null);
+    }, o.open(t, e, a), o.setRequestHeader("Content-Type", "application/json"), o.send(n);
 }
 
 var _createClass = function() {
     function e(e, t) {
         for (var n = 0; n < t.length; n++) {
-            var r = t[n];
-            r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
-            Object.defineProperty(e, r.key, r);
+            var a = t[n];
+            a.enumerable = a.enumerable || !1, a.configurable = !0, "value" in a && (a.writable = !0), 
+            Object.defineProperty(e, a.key, a);
         }
     }
-    return function(t, n, r) {
-        return n && e(t.prototype, n), r && e(t, r), t;
+    return function(t, n, a) {
+        return n && e(t.prototype, n), a && e(t, a), t;
     };
 }(), Header = function(e) {
     function t() {
@@ -69,16 +69,22 @@ var _createClass = function() {
     function t() {
         _classCallCheck(this, t);
         var e = _possibleConstructorReturn(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
-        return window.addEventListener("app.editor.clear", function() {
+        console.log(location.pathname);
+        var n = e;
+        return n.code = "", location.pathname && "/" != location.pathname && send_ajax_request("./api/get/" + location.pathname, "GET", null, !1, function(e) {
+            n.code = e, setTimeout(function() {
+                document.querySelector(".editor textarea").value = e;
+            }, 100);
+        }), window.addEventListener("app.editor.clear", function() {
             document.querySelector(".editor textarea").value = "";
         }), window.addEventListener("app.editor.save", function() {
             var e = document.querySelector(".editor textarea").value;
-            send_ajax_request("./api/save", JSON.stringify({
+            send_ajax_request("./api/save", "POST", JSON.stringify({
                 payload: e
-            }), function(e) {
+            }), !0, function(e) {
                 if (null !== e) {
                     var t = JSON.parse(e);
-                    console.log(t.id);
+                    location.pathname = String(t.id);
                 } else console.error("API Request to './api/save' has failed");
             });
         }), e;
@@ -86,14 +92,10 @@ var _createClass = function() {
     return _inherits(t, e), _createClass(t, [ {
         key: "render",
         value: function() {
-            var e = this;
             return React.createElement("div", {
                 className: "editor"
             }, React.createElement("textarea", {
-                spellCheck: "false",
-                onChange: function(t) {
-                    return e.onChange;
-                }
+                spellCheck: "false"
             }));
         }
     } ]), t;

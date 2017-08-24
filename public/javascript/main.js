@@ -1,5 +1,5 @@
 // Send's a simple POST Ajax request with 'data' as payload and returns the return payload
-function send_ajax_request(url, data, callback) {
+function send_ajax_request(url, type, data, ajax, callback) {
 	let httpRequest = new XMLHttpRequest();
 	
 	httpRequest.onreadystatechange = function() {
@@ -13,7 +13,7 @@ function send_ajax_request(url, data, callback) {
 		}
 	}
 	
-	httpRequest.open("POST", url);
+	httpRequest.open(type, url, ajax);
 	httpRequest.setRequestHeader("Content-Type", "application/json");
 	httpRequest.send(data);
 }
@@ -38,21 +38,33 @@ class Header extends React.Component {
 class Editor extends React.Component {
 	constructor() {
 		super();
+		console.log(location.pathname);
+		let self = this;
 		
+		self.code = "";
+		if(location.pathname && location.pathname != "/") {
+			send_ajax_request("./api/get/" + location.pathname, "GET", null, false, function(response) {
+				self.code = response;
+				setTimeout(function() {
+					document.querySelector(".editor textarea").value = response;
+				}, 100);
+			});
+		}
+
 		window.addEventListener("app.editor.clear", function() {
 			document.querySelector(".editor textarea").value = "";
 		});
 		
 		window.addEventListener("app.editor.save", function() {
 			let value = document.querySelector(".editor textarea").value;
-			send_ajax_request("./api/save", JSON.stringify({ payload: value }), function(response) {
+			send_ajax_request("./api/save", "POST", JSON.stringify({ payload: value }), true, function(response) {
 				if (response === null) { 
 					console.error("API Request to './api/save' has failed");
 					return;
 				}
 				
 				let data = JSON.parse(response);
-				console.log(data.id);
+				location.pathname = String(data.id);
 			});
 		});
 		
@@ -62,7 +74,7 @@ class Editor extends React.Component {
 	render() {
 		return (
 			<div className="editor">
-				<textarea spellCheck="false" onChange={(e) => this.onChange}/>
+				<textarea spellCheck="false" />
 			</div>
 		);
 	}

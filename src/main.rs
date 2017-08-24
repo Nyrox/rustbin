@@ -28,6 +28,25 @@ fn index() -> NamedFile {
     NamedFile::open("public/views/main.html").expect("Failed to load template: main.html")
 }
 
+#[get("/<id>")] 
+fn view_paste(id: String) -> NamedFile {
+	index()
+}
+
+#[get("/api/get/<id>")]
+fn api_get(id: u64) -> Option<NamedFile> {
+	let mut path = PathBuf::new();
+	path.push("public/pastes/");
+	path.push(id.to_string());
+	path.set_extension("txt");
+	
+	{
+		let _path = path.to_string_lossy();
+		println!("{}", _path);
+	}
+	NamedFile::open(path).ok()
+}
+
 #[derive(Serialize, Deserialize)]
 struct api_save_payload {
 	payload: String
@@ -60,6 +79,8 @@ fn main() {
 		.mount("/", routes![index])
 		.mount("/", routes![serve_public_file])
 		.mount("/", routes![api_save])
+		.mount("/", routes![view_paste])
+		.mount("/", routes![api_get])
 	};
 	
 	jupiter.launch();
