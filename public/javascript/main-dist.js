@@ -87,6 +87,11 @@ var _createClass = function() {
                     location.pathname = String(t.id);
                 } else console.error("API Request to './api/save' has failed");
             });
+        }), window.addEventListener("keydown", function(e) {
+            if (e.ctrlKey || e.metaKey) switch (String.fromCharCode(event.which).toLowerCase()) {
+              case "s":
+                e.preventDefault(), window.dispatchEvent(new Event("app.editor.save"));
+            }
         }), e;
     }
     return _inherits(t, e), _createClass(t, [ {
