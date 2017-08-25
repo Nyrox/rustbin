@@ -26,10 +26,10 @@ class Header extends React.Component {
 	render() {
 		return (<div className="header">
 			<div className="clear-btn icon" onClick={(e) => { window.dispatchEvent(new Event("app.editor.clear")); }}>
-				<img src="public/images/clear.svg" />
+				<img src="public/images/clear.svg" alt="clear" />
 			</div>
 			<div className="save-btn icon" onClick={(e) => { window.dispatchEvent(new Event("app.editor.save")); }}>
-				<img src="public/images/save.svg" />
+				<img src="public/images/save.svg" alt="save" />
 			</div>
 		</div>);
 	}

@@ -54,14 +54,16 @@ var _createClass = function() {
                     window.dispatchEvent(new Event("app.editor.clear"));
                 }
             }, React.createElement("img", {
-                src: "public/images/clear.svg"
+                src: "public/images/clear.svg",
+                alt: "clear"
             })), React.createElement("div", {
                 className: "save-btn icon",
                 onClick: function(e) {
                     window.dispatchEvent(new Event("app.editor.save"));
                 }
             }, React.createElement("img", {
-                src: "public/images/save.svg"
+                src: "public/images/save.svg",
+                alt: "save"
             })));
         }
     } ]), t;

@@ -42,7 +42,7 @@ textarea {
   height: 42px;
   cursor: pointer; }
   .header .icon:not(:last-of-type) {
-    border-right: 0.5px solid rgba(247, 247, 247, 0.5); }
+    border-right: 0.5px solid rgba(247, 247, 247, 0.3); }
 
 .header .icon img {
   display: block;
