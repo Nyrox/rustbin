@@ -1,29 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 $red: #DE3131;
+$col-blue: #008CBA;
+
+$col-grey-09: #F3F3F3;
 
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	
+	font-family: "Open Sans", sans-serif;
 }
 
+a { color: inherit; text-decoration: none; }
+
+button { border: none; }
+
 .editor {
-	min-height: 100vh;
+	height: calc(100vh - 55px);
 	
 	background: rgb(24, 24, 24);
 	color: rgb(249, 249, 249);
 	font-size: 14px;
 	font-family: Consolas;
 	
-	padding-top: 12px;
-	padding-left: 12px;
+	padding-top: 16px;
+	padding-left: 32px;
 
 }
 
 textarea {
 	width: 100%;
-	height: calc(100% - 12px);
+	height: calc(100% - 16px);
 	
 	background: inherit;
 	color: inherit;
@@ -32,31 +41,124 @@ textarea {
 	resize: none;
 	
 	&:focus { border: none; outline: none !important; }
+	font-family: "Roboto", "Consolas", monospace;
 }
 
-$header-height: 42px;
-$header-icon-height: 24px;
+$header-height: 55px;
+$header-icon-height: 14px;
 
 .header {
 	display: flex;
+	height: 55px; line-height: 55px;
+	padding: 0 32px;
 	
-	position: fixed;
-	right: 48px;
-	background: $red;
+	color: #39464E;
+	background: white;
 }
 
 .header .icon {
-	width: $header-height;
-	height: $header-height;
-	cursor: pointer;
-	
+	height: $header-icon-height;
+
 	&:not(:last-of-type) {
 		border-right: 0.5px solid rgba(247, 247, 247, 0.3);
 	}
 }
 
+.icon + p { margin-left: 12px; }
+p + .icon { margin-left: 12px; }
+
+
+.header .btn {
+	display: flex;
+	align-items: center;
+	> p { font-size: 14px; }
+	margin-right: 32px;
+	cursor: pointer;
+}
+
+.header .login-btn { margin-left: auto; margin-right: 0; cursor: pointer; white-space: nowrap; }
+
+
 .header .icon img {
 	display: block;
 	height: $header-icon-height;
 	margin: ($header-height - $header-icon-height) / 2 auto;
+}
+
+.main {
+	display: flex;
+}
+
+.login {
+	position: absolute;
+	right: 0; top: $header-height;
+	width: 420px;
+	padding: 32px;
+	
+	background: $col-grey-09;
+}
+
+.editor {
+	flex-grow: 1;
+}
+
+/* Form shit */
+
+.form-element {
+	* + & {
+		margin-top: 32px;
+	}
+}
+
+input.form-element {
+	display: block;
+	width: 100%;
+	height: 48px;
+	padding-left: 16px;
+	border: 1px solid black;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill {
+	background-color: white;
+	border-width: 1px;
+}
+
+button, .form-button {
+	height: 48px;
+	line-height: 48px;
+	font-family: "Open Sans";
+	font-size: 18px;
+	text-align: center;
+	
+	background: $col-blue;
+	color: white;
+}
+
+.form-col-2 {
+	display: flex;
+	justify-content: space-between;
+	
+	.form-element {
+		width: calc(50% - 16px);
+		margin-top: 0;
+	}
+}
+
+@media (max-width: 640px) {
+	.login {
+		width: 100%;
+	}
+	
+	.form-col-2 {
+		flex-direction: column;
+		
+		.form-element {
+			width: 100%;
+			
+			&:not(:first-of-type) { margin-top: 32px; }
+		}
+	}
 }
