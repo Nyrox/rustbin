@@ -2,28 +2,34 @@
 
 $red: #DE3131;
 
+$col-grey-09: #F3F3F3;
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	
+	font-family: "Open Sans", sans-serif;
 }
 
+a { color: inherit; }
+
 .editor {
-	min-height: 100vh;
+	height: calc(100vh - 55px);
 	
 	background: rgb(24, 24, 24);
 	color: rgb(249, 249, 249);
 	font-size: 14px;
 	font-family: Consolas;
 	
-	padding-top: 12px;
-	padding-left: 12px;
+	padding-top: 16px;
+	padding-left: 32px;
 
 }
 
 textarea {
 	width: 100%;
-	height: calc(100% - 12px);
+	height: calc(100% - 16px);
 	
 	background: inherit;
 	color: inherit;
@@ -32,31 +38,61 @@ textarea {
 	resize: none;
 	
 	&:focus { border: none; outline: none !important; }
+	font-family: "Roboto", "Consolas", monospace;
 }
 
-$header-height: 42px;
-$header-icon-height: 24px;
+$header-height: 55px;
+$header-icon-height: 14px;
 
 .header {
 	display: flex;
+	height: 55px; line-height: 55px;
+	padding: 0 32px;
 	
-	position: fixed;
-	right: 48px;
-	background: $red;
+	color: #39464E;
+	background: white;
 }
 
 .header .icon {
-	width: $header-height;
-	height: $header-height;
-	cursor: pointer;
-	
+	height: $header-icon-height;
+
 	&:not(:last-of-type) {
 		border-right: 0.5px solid rgba(247, 247, 247, 0.3);
 	}
+}
+
+.icon + p { margin-left: 12px; }
+p + .icon { margin-left: 12px; }
+
+.login-btn { margin-left: auto; opacity: 0.5; cursor: default !important; }
+
+.header .btn {
+	display: flex;
+	align-items: center;
+	> p { font-size: 14px; }
+	margin-right: 32px;
+	cursor: pointer;
 }
 
 .header .icon img {
 	display: block;
 	height: $header-icon-height;
 	margin: ($header-height - $header-icon-height) / 2 auto;
+}
+
+.main {
+	display: flex;
+}
+
+.login {
+	position: absolute;
+	right: 0; top: $header-height;
+	width: 420px;
+	padding: 32px;
+	
+	background: $col-grey-09;
+}
+
+.editor {
+	flex-grow: 1;
 }

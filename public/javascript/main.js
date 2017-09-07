@@ -25,13 +25,38 @@ class Header extends React.Component {
 	
 	render() {
 		return (<div className="header">
-			<div className="clear-btn icon" onClick={(e) => { window.dispatchEvent(new Event("app.editor.clear")); }}>
-				<img src="public/images/clear.svg" alt="clear" />
+			<div className="clear-btn btn" onClick={(e) => { window.dispatchEvent(new Event("app.editor.clear")); }}>
+				<img className="icon" src="public/images/clear.svg" alt="clear" />
+				<p>New</p>
 			</div>
-			<div className="save-btn icon" onClick={(e) => { window.dispatchEvent(new Event("app.editor.save")); }}>
-				<img src="public/images/save.svg" alt="save" />
+			<div className="save-btn btn" onClick={(e) => { window.dispatchEvent(new Event("app.editor.save")); }}>
+				<img className="icon" src="public/images/save.svg" alt="save" />
+				<p>Save</p>
+			</div>
+			<div className="login-btn btn" onClick={() => { this.onLoginClicked() }}>
+				<p>{ rustbin.app.state.user || "Not signed in"}</p>
+				<img className="icon" src="public/images/arrow.svg" alt="expand-menu" />
 			</div>
 		</div>);
+	}
+	
+	onLoginClicked() {
+		return;
+		if(rustbin.app.state.user) {
+			rustbin.app.toggleMenu();
+		}
+		else {
+			rustbin.app.toggleLogin();
+		}
+	}
+}
+
+class Login extends React.Component {
+	
+	render() {
+		return (<div className="login">
+			
+		</div>)
 	}
 }
 
@@ -95,13 +120,29 @@ class Editor extends React.Component {
 class Application extends React.Component {
 	constructor() {
 		super();
+		window.rustbin = window.rustbin || {};
+		window.rustbin.app = this;
+		
+		this.state = {
+			user: null,
+			loginExpanded: false
+		};		
 	}
 	
 	render() {
 		return (<div>
 			<Header />
-			<Editor />
+			{ this.state.loginExpanded &&
+				<Login />					
+			}
+			<div className="main">
+				<Editor />
+			</div>			
 		</div>);
+	}
+	
+	toggleLogin() {
+		this.setState({ loginExpanded: !this.state.loginExpanded });
 	}
 }
 

@@ -1,1 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M1.244,0l1.244,0l0,19.996l-1.244,0c-0.686,0 -1.244,-0.558 -1.244,-1.245l0,-17.507c0,-0.686 0.557,-1.244 1.244,-1.244Zm7.51,9.998l0,-8.754c0,-0.686 0.557,-1.244 1.244,-1.244l8.753,0c0.687,0 1.245,0.558 1.245,1.244l0,17.507c0,0.687 -0.558,1.245 -1.245,1.245l-1.244,0l-15.019,0l0,-2.489l15.019,0l0,-15.019l-6.265,0l0,7.51l3.696,0l-4.94,4.94l-4.94,-4.94l3.696,0Z" style="fill:#1d1d1d;"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-110.4,-20.4917)">
+        <g transform="matrix(1,0,0,1,74.0326,-0.508301)">
+            <g id="save" transform="matrix(0.7,0,0,0.7,43.3674,28)">
+                <g transform="matrix(1,0,0,1,-10,-10)">
+                    <clipPath id="_clip1">
+                        <rect x="0" y="0" width="20" height="20"/>
+                    </clipPath>
+                    <g clip-path="url(#_clip1)">
+                        <path d="M1.244,0L2.488,0L2.488,19.996L1.244,19.996C0.558,19.996 0,19.438 0,18.751L0,1.244C0,0.558 0.557,0 1.244,0L1.244,0ZM8.754,9.998L8.754,1.244C8.754,0.558 9.311,0 9.998,0L18.751,0C19.438,0 19.996,0.558 19.996,1.244L19.996,18.751C19.996,19.438 19.438,19.996 18.751,19.996L17.507,19.996L2.488,19.996L2.488,17.507L17.507,17.507L17.507,2.488L11.242,2.488L11.242,9.998L14.938,9.998L9.998,14.938L5.058,9.998L8.754,9.998Z" style="fill:rgb(57,70,78);"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
